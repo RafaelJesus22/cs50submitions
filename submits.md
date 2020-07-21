@@ -12,3 +12,6 @@ https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/readability
 
 substitution
 https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/substitution
+
+plurality
+https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/plurality
