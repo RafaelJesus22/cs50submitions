@@ -37,27 +37,26 @@ int main(int argc, string argv[])
     // checks if any candidate was passed
     if (argc < 2)
     {
-        //usage
+        printf("Usage: plurality [candidate ...]\n");
         return 1;
     }
 
+    candidate_count = argc - 1; // define number of candidates
+    
     // checks if number of candidates is bigger than allowed
-    if (argc > MAX_CANDIDATES + 1)
+    if (candidate_count > MAX_CANDIDATES)
     {
-        //usage
+        printf("Maximum number of candidates is %i\n", MAX_CANDIDATES);
         return 2;
     }
-
-    candidate_count = argc - 1; // define number of candidates
 
     voter_count = get_int("Number of voters: ");
 
     if (voter_count > MAX_VOTERS)
     {
-        //usage
+        printf("Maximum number of voters is %i\n", MAX_VOTERS);
         return 3;
     }
-
     // initialize candidates array
     for (int i = 0; i < candidate_count; i++)
     {
@@ -105,16 +104,6 @@ bool vote(int voter, int rank, string name)
         // if candidate found, update preferences so that they are the voter's rank preferences and return true
         if (strcmp(candidates[i].name, name) == 0)
         {
-            // handle duplicate votes
-            // for (int j = 1; j < candidate_count; j++)
-            // {
-            //     if (preferences[voter][j] == i)
-            //     {
-            //         puts("You can't vote the same candidate twice!");
-            //         return false;
-            //     }
-            // }
-
             preferences[voter][rank] = i;
             return true;
         }
@@ -151,7 +140,7 @@ bool print_winner(void)
 
     int min_votes = voter_count / 2 + 1;
     int winner_count = 0;
-    
+
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes == min_votes && !candidates[i].eliminated)
@@ -160,12 +149,12 @@ bool print_winner(void)
             winner_count++;
         }
     }
-    
+
     if (winner_count > 0)
     {
         return true;
     }
-    
+
     return false;
 }
 
@@ -176,7 +165,7 @@ int find_min(void)
 
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes < min)
+        if (min > candidates[i].votes)
         {
             min = candidates[i].votes;
         }
@@ -189,7 +178,7 @@ int find_min(void)
 
 bool is_tie(int min)
 {
-    for (int i = 0; i < cnadidate_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes != min && !candidates[i].eliminated)
         {
