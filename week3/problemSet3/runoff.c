@@ -86,13 +86,13 @@ int main(int argc, string argv[])
         printf("\n");
     }
 
-    print_winner();
-
-    // for (int i = 0; i < candidate_count; i++)
-    // {
-    //     printf("%i\n", candidates[i].votes);
-    // }
-
+    while (!print_winner())
+    {
+        if (!is_tie(find_min()))
+        {
+            eliminate(find_min());
+        }
+    }
 
 }
 
@@ -189,10 +189,14 @@ int find_min(void)
 
 bool is_tie(int min)
 {
-    // accepts the minimun number of votes min as input
-
-    // return true, if the election is tied between all remaining candidates, and return false otherwise
-    return false;
+    for (int i = 0; i < cnadidate_count; i++)
+    {
+        if (candidates[i].votes != min && !candidates[i].eliminated)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 
