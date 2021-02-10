@@ -26,3 +26,11 @@ https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/plurality
 
 ### runoff
 https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/runoff
+
+## pset4
+
+### filter/less
+https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2020/x/filter/less
+
+### recover
+https://submit.cs50.io/users/RafaelJesus22/cs50/problems/2021/x/recover
